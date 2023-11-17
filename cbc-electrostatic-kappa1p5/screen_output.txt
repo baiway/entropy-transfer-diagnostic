@@ -1,0 +1,50 @@
+ Created by GS2 at 2023-10-03T11:44:42.147Z+01:00
+ GS2 version: 8.1.1-81-g0181f339
+ Run UUID: 1F7B2A3F-3166-4D42-B536-366B624E1D14
+ GK_SYSTEM: archer2
+ Compiler: gfortran
+
+Running on 256 processors
+
+WARNING: diagnostic 'write_nl_flux' is (currently) non-functional in new diagnostics module. This will have no effect.
+ Changing time step to    2.5000000000000001E-002  from    5.0000000000000003E-002  on step number         2495  i.e. time =    124.69999999999506     
+  Re-initialize:    1.4509301339994636       seconds
+ Changing time step to    1.2500000000000001E-002  from    2.5000000000000001E-002  on step number         2629  i.e. time =    128.04999999999580     
+  Re-initialize:    1.3667283300001145       seconds
+ Changing time step to    2.5000000000000001E-002  from    1.2500000000000001E-002  on step number         3056  i.e. time =    133.39999999999094     
+  Re-initialize:    1.3647508979993290       seconds
+ Changing time step to    5.0000000000000003E-002  from    2.5000000000000001E-002  on step number         3498  i.e. time =    144.44999999999345     
+  Re-initialize:    1.6653511249996882       seconds
+ Changing time step to    2.5000000000000001E-002  from    5.0000000000000003E-002  on step number         5695  i.e. time =    254.25000000001842     
+  Re-initialize:    3.3922559709999405       seconds
+ Changing time step to    5.0000000000000003E-002  from    2.5000000000000001E-002  on step number         5983  i.e. time =    261.47500000001384     
+  Re-initialize:    3.9000515540010383       seconds
+ Changing time step to    2.5000000000000001E-002  from    5.0000000000000003E-002  on step number         9270  i.e. time =    425.77500000005119     
+  Re-initialize:    2.4427849370003969       seconds
+ Changing time step to    5.0000000000000003E-002  from    2.5000000000000001E-002  on step number        10032  i.e. time =    444.85000000003384     
+  Re-initialize:    1.3689342469988333       seconds
+   7.6092336956302464E-002  :    5.0000000000000003E-002
+
+ Initialization              0.041 min    0.0 %
+ Advance steps             384.874 min   99.9 %
+(field solve                 1.783 min    0.5 %)
+(field solve mpi             0.660 min    0.2 %)
+(collisions                  0.000 min    0.0 %)
+(collisions mpi              0.000 min    0.0 %)
+(explicit/nl                42.361 min   11.0 %)
+(explicit/nl mpi             1.304 min    0.3 %)
+(explicit/nl fft            11.148 min    2.9 %)
+(diagnostics               330.148 min   85.7 %)
+ Re-initialize               0.283 min    0.1 %
+ Redistribute               13.493 min    3.5 %
+(redistribute mpi            0.721 min    0.2 %)
+(redistribute copy          12.771 min    3.3 %)
+ Finishing                   0.004 min    0.0 %
+ MPI                         2.733 min    0.7 %
+(Overheads                   0.000 min    0.0 %)
+(Collectives                 2.011 min    0.5 %)
+(PTP                         0.073 min    0.0 %)
+(Sync                        0.648 min    0.2 %)
+ total from timer is:   385.37 min
+
+Run finished at 2023-10-03T18:10:04.561Z+01:00

@@ -1,0 +1,3 @@
+ WARNING: Setting D_hypervisc = D_hyperres, each to value of D_hyper
+Disabling intspec_sub -- il,ie,is split nicely ? F F T 
+ INFO: changing in_memory  after calling initial_values_overrides_type will almost certainly cause  segmentation faults.
