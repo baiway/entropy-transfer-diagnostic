@@ -1,0 +1,175 @@
+&nonlinear_terms_knobs
+  nonlinear_mode = 'on'
+  cfl = 0.5
+/
+
+&hyper_knobs
+  hyper_option = 'both'
+  d_hyper = 1e-2
+/
+
+&kt_grids_knobs
+  grid_option = "box"
+/
+
+&kt_grids_box_parameters
+  jtwist = 6 ! only 6 due to 0.5 smaller shat here than in Belli et al 2008
+  y0 = -0.1
+  nx = 72
+  ny = 36
+/
+
+&kt_grids_range_parameters
+  aky_min = 0.01
+  aky_max = 2.00
+  naky = 20
+  theta0_min = 0.0
+  theta0_max = 0.0
+  ntheta0 = 1
+/
+
+&theta_grid_parameters
+  ! s-alpha in Miller
+  akappa = 1.0
+  akappri = 0.0
+  tri = 0.0
+  tripri = 0.0
+  ! Cyclone parameters
+  shat = 0.78
+  qinp = 1.4
+  ! Cyclone lengths normalised to DIII-D minor radius, a = 0.625 m
+  eps = 0.367647058824 
+  rmaj = 2.72
+  r_geo = 2.72
+  rhoc = 0.5
+  epsl = 0.735294117647
+  shift =  0.0
+  ! Numerical parameters
+  ntheta = 32
+  nperiod = 1
+/
+
+&theta_grid_knobs
+  equilibrium_option = "eik"
+/
+
+&theta_grid_eik_knobs
+  local_eq = .true.  ! Use Miller geometry parameterization
+  bishop = 4  ! Use numerical equilibrium + s_hat_input and beta_prime_input
+  s_hat_input = 0.78  ! Abdoul 0.8, Falchetto 0.78, Dimits 0.776-0.796
+  beta_prime_input = 0.0  ! Electrostatic
+  irho = 2  ! rho = midplane diameter / LCFS diameter
+/
+
+&le_grids_knobs
+  ngauss = 30
+  negrid = 16
+/
+
+&dist_fn_knobs
+  adiabatic_option = "field-line-average-term"
+  boundary_option = 'linked'
+  esv = .true.
+/
+
+&fields_knobs
+  field_option = "local"
+  minnrow = 64000
+  do_smart_update = .true.
+  field_subgath = .true.
+  field_local_allreduce = .true.
+  force_maxwell_reinit = .false.
+/
+
+&knobs
+  beta = 0  ! Electrostatic
+  tite = 1.0
+  zeff = 1.0
+  fphi = 1.0
+  fapar = 0  ! Electrostatic
+  fbpar = 0  ! Electrostatic
+  delt = 0.05
+  nstep = 25000
+  avail_cpu_time = 82800 !23h
+  margin_cpu_time = 900 !15min
+  immediate_reset = .true.
+  delt_option = "default"
+  use_old_diagnostics = .false.
+  seed = 42
+/
+
+&reinit_knobs
+  abort_rapid_time_step_change = .true. 
+  delt_adj = 2.0  ! default
+  delt_cushion = 1.5  ! defualt
+  delt_minimum = 1.0e-5  ! default
+  in_memory = .false.
+/
+
+&layouts_knobs
+  fft_measure_plan = .false.
+  layout = "xyles"
+  intmom_sub = .true.
+  intspec_sub = .true.
+  opt_redist_persist = .true.
+  opt_redist_persist_overlap = .true.
+  opt_redist_nbk = .true.
+/
+
+&collisions_knobs
+  collision_model = "none"
+  use_le_layout = .true.
+/
+
+&species_knobs
+  nspec =  1
+/
+
+&species_parameters_1
+  z = 1.0
+  mass = 1.0
+  dens = 1.0
+  temp = 1.0
+  tprim = 4.0
+  fprim = 0.81
+  uprim = 0.0
+  vnewk = 0.0
+  type = 'ion'
+  bess_fac = 1.0
+/
+
+&dist_fn_species_knobs_1
+  fexpr = 0.48
+  bakdif = 0.05
+/
+
+&init_g_knobs
+  ginit_option = "noise"
+  clean_init = .true.
+  chop_side = .true.
+  phiinit = 1.0e-5
+  restart_dir = "restart_dir"
+  ! include_explicit_source_in_restart = .false.
+/
+
+&gs2_diagnostics_knobs
+  write_ascii = .false.
+  write_moments = .true.
+  write_fields = .true.
+  write_ntot_over_time = .true.
+  write_density_over_time = .true.
+  write_phi_over_time = .true.
+  nwrite = 10
+  write_line = .false. 
+
+  omegatinst = 500.0
+  omegatol = -0.001 ! necessary to force nstep is actually run
+  save_for_restart = .true.
+  file_safety_check = .true.
+
+  ! --- tobias toggle section ---
+  write_entropy_transfer_3D = .true.
+  entropy_transfer_symmetrised = .false.
+/
+
+
