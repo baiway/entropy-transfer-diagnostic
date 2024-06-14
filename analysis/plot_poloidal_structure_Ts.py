@@ -16,19 +16,21 @@ def plot_Ts(slice, plot_path):
     Ts = slice["entropy_transfer_3D"]
     T = t[-1] - t[0]
     Ts_by_theta = np.reciprocal(T) * Ts.integrate(coord="t").sum(dim=["kys", "kxs", "kxt"])
-    Ts_by_theta /= abs(Ts_by_theta).max() # normalise
 
+    # Use this scalar to normalise the turbulent and zonal phi2_by_theta
+    phi2_total = np.reciprocal(T) * slice["phi2"].integrate(coord=["t"])
 
-    phi2 = slice["phi_t"].sel(ri=0) ** 2 + slice["phi_t"].sel(ri=1) ** 2
-    phi2_by_mode_by_theta = np.reciprocal(T) * phi2.integrate(coord=["t"])
+    phi2_t = slice["phi_t"].isel(ri=0)**2 + slice["phi_t"].isel(ri=1)**2
+    phi2_by_mode_by_theta = np.reciprocal(T) * phi2_t.integrate(coord=["t"])
 
     phi2_by_theta = phi2_by_mode_by_theta.sum(dim=["kx", "ky"])
     phi2_zonal_by_theta = phi2_by_mode_by_theta.sel(ky=0).sum(dim="kx")
     phi2_turb_by_theta = phi2_by_theta - phi2_zonal_by_theta
 
     # normalise
-    phi2_zonal_by_theta /= phi2_by_theta
-    phi2_turb_by_theta /= phi2_by_theta
+    phi2_zonal_by_theta /= phi2_total
+    phi2_turb_by_theta /= phi2_total
+    Ts_by_theta /= abs(Ts_by_theta).max()
     
     ax.plot(theta, Ts_by_theta, label=r"$\langle T_s \rangle_{t,x,y}$")
     ax.plot(theta, phi2_turb_by_theta, label="turbulent " + 
