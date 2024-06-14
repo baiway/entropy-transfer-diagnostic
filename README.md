@@ -50,15 +50,23 @@ First clone this repository:
 ```
 git clone https://github.com/baiway/entropy-transfer-diagnostic.git
 ```
+Then create a virtual environment and install dependencies
+```
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
 The [analysis](analysis/) folder contains the following scripts:
 - [plot_poloidal_structure_Ts.py](analysis/plot_poloidal_structure_Ts.py) is a simple script that plots the poloidal structure of entropy transfer $T_s$.
-- Add movie script (+ tidy it up)
-- Add Dask script (does it work?)
+- [movie-script.py](analysis/movie-script.py) produces a movie (.mp4) showing the evolution of several plots as the time integration period moves. The plots are: the $(k_x, k_y)$ spectrum of $\phi^2$, the time trace of $\phi^2$ and $T_s$, and the poloidal structure of $\phi^2$ and $T_s$. Detailed usage instructions can be found by entering `python3 movie-script.py --help`. **Beware:** this is not very carefully written and you'll run out of memory of the time integration window is too large. I recommend $\leq$ 200 if using inputs similar to those in [inputs.in](inputs.in).
+- [dask-script.py](dask-script.py) I wrote this in an attempt to solve some of the memory issues I was encountering using the script above. It's currently very rough though and not finished. Would not recommend using.
 
 
 ## To-do:
+- Add some notes explaining Eq. 16 and 17 in Ref. [2]
 - In `src/diagnostics/gs2_diagnostics_new.f90`, I'm currently calling `init_diagnostics_entropy_transfer_3D` after `define_dims` (rather than with the other diagnostic initialisations). It would be better to move the dimension initilisation inside `define_dims` with a preprocessor flag (i.e. if using transfer diagnostic, define extra dimensions).
 
 ## References
 [1] https://bitbucket.org/tobiasschuett/gs2-implement/
+
 [2] M. Nakata, T.-H. Watanabe and H. Sugama, Nonlinear entropy transfer via zonal flows in gyrokinetic plasma turbulence, Physics of Plasmas 2012, https://aip.scitation.org/doi/full/10.1063/1.3675855
