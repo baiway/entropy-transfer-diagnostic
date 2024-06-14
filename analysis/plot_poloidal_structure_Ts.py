@@ -42,6 +42,9 @@ def plot_Ts(slice, plot_path):
         [r"$-\pi$", r"$-\pi/2$", "0", r"$\pi/2$", r"$\pi$"])
     ax.legend()
 
+    ax.grid()
+    ax.set_axisbelow(True)
+
     # Save frame and return filepath
     fig.savefig(plot_path)
     plt.close(fig)
