@@ -1,3 +1,5 @@
+certifi==2024.6.2
+cftime==1.6.4
 contourpy==1.2.1
 cycler==0.12.1
 dill==0.3.8
@@ -6,6 +8,7 @@ imageio-ffmpeg==0.5.1
 kiwisolver==1.4.5
 matplotlib==3.9.0
 multiprocess==0.70.16
+netCDF4==1.7.0
 numpy==1.26.4
 packaging==24.1
 pandas==2.2.2
@@ -17,3 +20,4 @@ setuptools==70.0.0
 six==1.16.0
 tzdata==2024.1
 xarray==2024.6.0
+git+https://bitbucket.org/gyrokinetics/analysis.git#egg=gs2ools
