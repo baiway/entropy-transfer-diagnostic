@@ -58,8 +58,8 @@ pip install -r requirements.txt
 ```
 The [analysis](analysis/) folder contains the following scripts:
 - [plot_poloidal_structure_Ts.py](analysis/plot_poloidal_structure_Ts.py) is a simple script that plots the poloidal structure of entropy transfer $T_s$.
-- [movie-script.py](analysis/movie-script.py) produces a movie (.mp4) showing the evolution of several plots as the time integration period moves. The plots are: the $(k_x, k_y)$ spectrum of $\phi^2$, the time trace of $\phi^2$ and $T_s$, and the poloidal structure of $\phi^2$ and $T_s$. Detailed usage instructions can be found by entering `python3 movie-script.py --help`. **Beware:** this is not very carefully written and you'll run out of memory of the time integration window is too large. I recommend $\leq$ 200 if using inputs similar to those in [inputs.in](inputs.in).
-- [dask-script.py](dask-script.py) I wrote this in an attempt to solve some of the memory issues I was encountering using the script above. It's currently very rough though and not finished. Would not recommend using.
+- [movie-script.py](analysis/movie-script.py) produces a movie (.mp4) showing the evolution of several plots as the time integration period moves. The plots are: the $(k_x, k_y)$ spectrum of $\phi^2$, the time trace of $\phi^2$ and $T_s$, and the poloidal structure of $\phi^2$ and $T_s$. Detailed usage instructions can be found by entering `python3 movie-script.py --help`. **Beware:** this is not very carefully written and you'll run out of memory if the time integration window is too large. I recommend setting the window width (`T` in the code) to $\leq$ 200 (in GS2 units) if using inputs similar to those in [inputs.in](inputs.in).
+- [dask-script.py](dask-script.py) I wrote this in an attempt to solve some of the memory issues I was encountering using the script above. It's currently very rough though and not finished. Would not recommend using yet.
 
 
 ## To-do:
