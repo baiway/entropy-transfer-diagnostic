@@ -28,6 +28,8 @@ module load tools/git/2.19.1-GCCcore-7.3.0
 make -I Makefiles GK_SYSTEM=viking -j 6
 ```
 
+An example submission script is shown in [job.slurm](job.slurm). Ensure you change `run_dir` and `GS2_exec` before attempting to run, then submit the job with `sbatch job.slurm`.
+
 ### Running the diagnostic
 An example input file is shown in [input.in](input.in). I've just looked at the unshaped CBC so far with `tprim=4.0`. The settings for the diagnostic are:
 ```
